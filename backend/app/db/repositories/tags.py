@@ -9,5 +9,6 @@ class TagsRepository(BaseRepository):
         tags_row = await queries.get_all_tags(self.connection)
         return [tag[0] for tag in tags_row]
 
+
     async def create_tags_that_dont_exist(self, *, tags: Sequence[str]) -> None:
         await queries.create_new_tags(self.connection, [{"tag": tag} for tag in tags])
